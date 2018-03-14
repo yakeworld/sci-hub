@@ -10,9 +10,9 @@
 
 // ==/UserScript==
 window.addEventListener('load', function() {
-   var els = document.getElementsByTagName("A");
+   var links = document.getElementsByTagName("A");
    for(var i = 0, l = els.length; i < l; i++) {
-      var el = els[i];
-      el.href = el.href.replace(/^((http(s|):\/\/(www\.|))|)(dx.|)doi\.org\//gim, 'http://sci-hub.la/');
+      var link = links[i];
+      link.href = link.href.replace(/^((http(s|):\/\/(www\.|))|)(dx.|)doi\.org\//gim, 'http://sci-hub.la/');
    }
 }, false);
