@@ -1,16 +1,17 @@
 
 // ==UserScript==
 // @name          Google Scholar sci-hub link
-// @namespace    yakeworld
+// @namespace    https://raw.githubusercontent.com/yakeworld/sci-hub/master/Google_Scholar_sci-hub_link
 // @version      1.0
 // @description   This script adds download buttons on Google Scholar,sci-hub.la.
+// @author      yakeworld
 // @include      http*://scholar.google.*/scholar?*
 // @include      http*://scholar.google.*.*/scholar?*
 // @grant        none
 // ==/UserScript==
 
 (function() {
-        'use strict';
+       'use strict';
         var sciHubUrl='https://sci-hub.la/';
         var i;
         var resourcesList=document.getElementById('gs_res_ccl_mid');
