@@ -1,0 +1,54 @@
+
+// ==UserScript==
+// @name          Google Scholar sci-hub link
+// @namespace    yakeworld
+// @version      1.0
+// @description   This script adds download buttons on Google Scholar,sci-hub.la.
+// @include      http*://scholar.google.*/scholar?*
+// @include      http*://scholar.google.*.*/scholar?*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+        'use strict';
+        var sciHubUrl='https://sci-hub.la/';
+        var i;
+        var resourcesList=document.getElementById('gs_res_ccl_mid');
+        var results=resourcesList.children.length;
+        var gs_ggs_gs_fl;
+        for(i=0;i<results;i++){
+            try{
+                if(resourcesList.children[i].getElementsByClassName("gs_ggs gs_fl").length==0){
+                    gs_ggs_gs_fl=document.createElement("div");
+                    gs_ggs_gs_fl.setAttribute("class","gs_ggs gs_fl");
+                    resourcesList.children[i].insertBefore(gs_ggs_gs_fl,resourcesList.children[i].firstChild);
+                    addButtonScholar(sciHubUrl,resourcesList.children[i].firstChild);
+                }
+                else{
+                    addButtonScholar(sciHubUrl,resourcesList.children[i].firstChild);
+                }
+            }
+            catch(err){
+                alert(err+"//"+resourcesList.children[i].lastElementChild.innerHTML);
+            }
+        }
+
+})();
+
+function addButtonScholar(sciHubUrl,linkDiv){
+    var link=linkDiv.parentNode.getElementsByClassName("gs_rt")[0].lastChild.href;
+    var creatingElement;
+    if(link!=undefined){
+        creatingElement=document.createElement("div");
+        creatingElement.setAttribute("class","gs_ggsd");
+        if(link.match('pdf'))
+           {
+            creatingElement.innerHTML='<a href="'+sciHubUrl+link+'" target="_blank" >[PDF]  Sci-Hub</a>';
+           }
+           else
+           {
+        creatingElement.innerHTML='<a href="'+sciHubUrl+link+'" target="_blank" >[Full Text] Sci-Hub</a>';
+            }
+           linkDiv.appendChild(creatingElement);
+}
+}
