@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        sci-hub automatic link
-// @namespace https://github.com/yakeworld/sci-hub/
+// @namespace https://raw.githubusercontent.com/yakeworld/sci-hub/master/sci-hub_automatic_link.js
 // @version     1.0
 // @description link DOI to sci-hub.la
 // @author      yakeworld
